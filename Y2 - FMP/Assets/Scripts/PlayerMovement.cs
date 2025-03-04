@@ -1,0 +1,59 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    public CharacterController controller;
+
+    public float speed = 12f;
+    public Transform playerCamera; // Reference to the camera to determine forward direction
+    public float gravity = -9.81f;
+
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
+
+    Vector3 velocity;
+    bool isGrounded;
+    void Update()
+    {
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if(isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
+
+        float x = Input.GetAxisRaw("Horizontal"); // Use GetAxisRaw for instant stop
+        float z = Input.GetAxisRaw("Vertical");
+
+        // Get camera's forward and right directions, ignoring the Y-axis (to prevent unintended vertical movement)
+        Vector3 forward = playerCamera.forward;
+        Vector3 right = playerCamera.right;
+
+        forward.y = 0;
+        right.y = 0;
+
+        forward.Normalize();
+        right.Normalize();
+
+        // Calculate movement direction
+        Vector3 move = forward * z + right * x;
+
+        // Prevents drifting by ensuring move is precisely zero when no input is given
+        if (move.magnitude < 0.1f)
+        {
+            move = Vector3.zero;
+        }
+
+        // Move the character
+        controller.Move(move * speed * Time.deltaTime);
+
+        velocity.y += gravity * Time.deltaTime;
+
+        controller.Move(velocity * Time.deltaTime); 
+
+    }
+}
