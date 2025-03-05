@@ -17,6 +17,15 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
+
+    public Animator elevatorAnimator;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "ExitElevator")
+        {
+            elevatorAnimator.SetTrigger("ExitElevator");
+        }
+    }
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);

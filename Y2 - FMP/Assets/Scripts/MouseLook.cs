@@ -12,6 +12,11 @@ public class MouseLook : MonoBehaviour
 
     float xRotation = 0f;
     float yRotation = 0f;
+    public float raycastDistance = 0f;
+
+    public LayerMask interactable;
+
+    public RaycastHit interactableHit;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -31,5 +36,12 @@ public class MouseLook : MonoBehaviour
         // Apply rotation to camera and player body
         transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
         //playerBody.Rotate(Vector3.up * mouseX);
+        Physics.Raycast(gameObject.transform.GetChild(0).gameObject.transform.position, -gameObject.transform.GetChild(0).gameObject.transform.right, out interactableHit, raycastDistance, interactable);
+        Debug.DrawRay(gameObject.transform.GetChild(0).gameObject.transform.position, -gameObject.transform.GetChild(0).gameObject.transform.right, Color.green);
+        if( interactableHit.collider != null )
+        {
+            Debug.Log("Raycast has hit" + interactableHit.collider.name);
+            Debug.Log("Raycast has hit" + interactableHit.collider.gameObject.layer);
+        }
     }
 }
