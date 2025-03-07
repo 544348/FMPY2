@@ -18470,6 +18470,53 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1151826498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1151826500}
+  - component: {fileID: 1151826499}
+  m_Layer: 0
+  m_Name: ScriptRunner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1151826499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151826498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0750763cfe303634ba4018c5a5551162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToMove: {fileID: 92248443}
+  targetPosition: {x: -160, y: -47.099, z: -8.99}
+  moveSpeed: 3
+--- !u!4 &1151826500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151826498}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -73.8, y: -44.1, z: 8.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1157340172
 Mesh:
   m_ObjectHideFlags: 0
@@ -29263,7 +29310,7 @@ Transform:
   m_GameObject: {fileID: 1708081442}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0005949075, y: 0.00005970065, z: -0.000010849383, w: 0.9999998}
-  m_LocalPosition: {x: -20.31, y: 48.23, z: -17.24}
+  m_LocalPosition: {x: -118.4, y: -37.3, z: -17.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33821,7 +33868,7 @@ GameObject:
   - component: {fileID: 1990785381}
   - component: {fileID: 1990785380}
   m_Layer: 7
-  m_Name: Cylinder
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35722,11 +35769,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7185282085479384505, guid: fce00c9b688c9f04085556fc590234f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -48.3495
+      value: -48.58
       objectReference: {fileID: 0}
     - target: {fileID: 7185282085479384505, guid: fce00c9b688c9f04085556fc590234f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 44.41
+      value: 44.59
       objectReference: {fileID: 0}
     - target: {fileID: 7185282085479384505, guid: fce00c9b688c9f04085556fc590234f8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -35793,3 +35840,4 @@ SceneRoots:
   - {fileID: 1584221601}
   - {fileID: 1013079586}
   - {fileID: 1990785383}
+  - {fileID: 1151826500}
