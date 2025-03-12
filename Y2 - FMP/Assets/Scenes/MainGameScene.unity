@@ -3473,6 +3473,7 @@ MonoBehaviour:
   interactable:
     serializedVersion: 2
     m_Bits: 128
+  theMaterials: []
 --- !u!1 &331590394
 GameObject:
   m_ObjectHideFlags: 0
@@ -6330,7 +6331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 522021df03b431c4392e8ece35196209, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.47
+      value: -24.49
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 522021df03b431c4392e8ece35196209, type: 3}
       propertyPath: m_LocalRotation.w
@@ -36138,6 +36139,7 @@ GameObject:
   - component: {fileID: 1990785382}
   - component: {fileID: 1990785381}
   - component: {fileID: 1990785380}
+  - component: {fileID: 1990785384}
   m_Layer: 7
   m_Name: Button
   m_TagString: Untagged
@@ -36236,6 +36238,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1990785384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990785379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a590743258d22dc40b496fcd9ea07c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultAndOutline:
+  - {fileID: 2100000, guid: bb5850e458bb7114f82cf64889cbccb0, type: 2}
+  - {fileID: 2100000, guid: fa83dd9fe64d6ce4f94267e5fdfa65a2, type: 2}
+  defaultMaterials:
+  - {fileID: 0}
 --- !u!1 &2002313377
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class MouseLook : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class MouseLook : MonoBehaviour
     public LayerMask interactable;
 
     public RaycastHit interactableHit;
+
+    private GameObject lastInteractableObjectLookedAt;
+    private MeshRenderer meshRen;
+    public Material[] theMaterials;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -42,6 +47,17 @@ public class MouseLook : MonoBehaviour
         {
             Debug.Log("Raycast has hit" + interactableHit.collider.name);
             Debug.Log("Raycast has hit" + interactableHit.collider.gameObject.layer);
+            meshRen = interactableHit.collider.gameObject.GetComponent<MeshRenderer>();
+            meshRen.materials = interactableHit.collider.gameObject.GetComponent<Outline>().defaultAndOutline;
+            lastInteractableObjectLookedAt = interactableHit.collider.gameObject;
+        }
+        else
+        {
+            Debug.Log("Looking at different object");
+            if(meshRen != null)
+            {
+                meshRen.materials = lastInteractableObjectLookedAt.GetComponent<Outline>().defaultMaterials;
+            }
         }
     }
 }
