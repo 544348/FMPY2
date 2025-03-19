@@ -27,5 +27,9 @@ public class ElevatorScript : MonoBehaviour
     {
         theElevatorAnimator = GetComponent<Animator>();
     }
-
+    public void OpenBackDoor()
+    {
+        theElevatorAnimator.SetTrigger("BackdoorOpen");
+        Debug.Log("Elevator door should open");
+    }
 }
