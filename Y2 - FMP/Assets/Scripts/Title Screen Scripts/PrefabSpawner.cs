@@ -34,8 +34,8 @@ public class PrefabSpawner : MonoBehaviour
             // Randomly select a prefab from the list
             GameObject prefabToSpawn = prefabs[Random.Range(0, prefabs.Count)];
 
-            // Instantiate the prefab at the specified position
-            Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+            // Instantiate the prefab at the specified position with its original rotation
+            Instantiate(prefabToSpawn, spawnPosition, prefabToSpawn.transform.rotation);
 
             // Wait for the specified delay before spawning again
             yield return new WaitForSeconds(spawnDelay);
