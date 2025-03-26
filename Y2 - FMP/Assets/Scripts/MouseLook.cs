@@ -15,9 +15,12 @@ public class MouseLook : MonoBehaviour
     float yRotation = 0f;
     public float raycastDistance = 0f;
 
+    private GameObject interactableObject;
+
     public LayerMask interactable;
 
     public RaycastHit interactableHit;
+    public RaycastHit interactableObjectHit;
 
     private GameObject lastInteractableObjectLookedAt;
     private MeshRenderer meshRen;
@@ -38,6 +41,22 @@ public class MouseLook : MonoBehaviour
 
         yRotation += mouseX; // Allow full horizontal rotation
 
+
+        if (Input.GetKeyDown(KeyCode.E) && interactableObject != null)
+        {
+            Physics.Raycast(gameObject.transform.GetChild(0).gameObject.transform.position, -gameObject.transform.GetChild(0).gameObject.transform.right, out interactableObjectHit, raycastDistance, interactable);
+            Debug.DrawRay(gameObject.transform.GetChild(0).gameObject.transform.position, -gameObject.transform.GetChild(0).gameObject.transform.right, Color.red);
+            Debug.Log("Has interacted");
+            if (interactableObject.GetComponent<ElevatorButton>() != null)
+            {
+                interactableObject.GetComponent<ElevatorButton>().ButtonPress();
+                interactableObject.GetComponent<Animator>().SetTrigger("ButtonPress");
+                if (interactableObjectHit.collider.gameObject.tag == "Button")
+                {
+                    interactableObject = interactableObjectHit.collider.gameObject;
+                }
+            }
+        }
         // Apply rotation to camera and player body
         transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
         //playerBody.Rotate(Vector3.up * mouseX);
@@ -45,6 +64,8 @@ public class MouseLook : MonoBehaviour
         Debug.DrawRay(gameObject.transform.GetChild(0).gameObject.transform.position, -gameObject.transform.GetChild(0).gameObject.transform.right, Color.green);
         if( interactableHit.collider != null )
         {
+            interactableObject = interactableHit.collider.gameObject;
+
             Debug.Log("Raycast has hit" + interactableHit.collider.name);
             Debug.Log("Raycast has hit" + interactableHit.collider.gameObject.layer);
             meshRen = interactableHit.collider.gameObject.GetComponent<MeshRenderer>();
@@ -54,6 +75,7 @@ public class MouseLook : MonoBehaviour
         else
         {
             Debug.Log("Looking at different object");
+            interactableObject = null;
             if(meshRen != null)
             {
                 meshRen.materials = lastInteractableObjectLookedAt.GetComponent<Outline>().defaultMaterials;

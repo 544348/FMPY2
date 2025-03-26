@@ -9,9 +9,11 @@ public class ElevatorScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("Player has stepped on elevator");
             other.transform.parent = gameObject.transform;
-            theElevatorAnimator.SetTrigger("PlayerHasSteppedOnElevator");
             other.gameObject.GetComponent<PlayerMovement>().elevatorAnimator = theElevatorAnimator;
+            theElevatorAnimator.SetTrigger("PlayerHasSteppedOnElevator");
+            
         }
     }
     private void OnTriggerExit(Collider other)
