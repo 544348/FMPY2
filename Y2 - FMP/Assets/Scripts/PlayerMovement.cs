@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
@@ -15,15 +16,38 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
+    private int taskNumber = 0;
+    public Dictionary<string , bool> taskList = new Dictionary<string , bool>();
+
     Vector3 velocity;
     bool isGrounded;
 
     public Animator elevatorAnimator;
+
+    private void Start()
+    {
+        taskList.Add("interactWithComputer", false);
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "ExitElevator")
         {
             elevatorAnimator.SetTrigger("ExitElevator");
+        }
+    }
+
+    public void CompleteTask(string taskName, string newTask)
+    {
+        if (taskList.ContainsKey(taskName))
+        {
+            taskList[taskName] = true;
+            taskList.Add(newTask, false);
+            taskNumber++;
+        }
+        else
+        {
+            Debug.LogError(taskName + "Task doesnt exist");
         }
     }
     void Update()

@@ -22,6 +22,8 @@ public class MouseLook : MonoBehaviour
     public RaycastHit interactableHit;
     public RaycastHit interactableObjectHit;
 
+    private Interacable interactableScript;
+
     private GameObject lastInteractableObjectLookedAt;
     private MeshRenderer meshRen;
     public Material[] theMaterials;
@@ -54,6 +56,14 @@ public class MouseLook : MonoBehaviour
                 if (interactableObjectHit.collider.gameObject.tag == "Button")
                 {
                     interactableObject = interactableObjectHit.collider.gameObject;
+                }
+            }
+            else if(interactableObject.GetComponent<Interacable>() != null)
+            {
+                interactableScript = interactableObject.GetComponent<Interacable>();
+             //   if (interactableScript.theType.interactableType == interactableScript.theType.computer)
+                {
+
                 }
             }
         }
