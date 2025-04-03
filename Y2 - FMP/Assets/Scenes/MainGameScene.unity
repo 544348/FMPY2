@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.20125782, g: 0.11802368, b: 0.10316044, a: 1}
+  m_AmbientSkyColor: {r: 0.14231077, g: 0.08345534, b: 0.072945446, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -8500,6 +8500,7 @@ GameObject:
   - component: {fileID: 367063321}
   - component: {fileID: 367063323}
   - component: {fileID: 367063322}
+  - component: {fileID: 367063324}
   m_Layer: 0
   m_Name: Spot Light (1)
   m_TagString: Untagged
@@ -8610,6 +8611,46 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &367063324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367063320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84532fa6aea45a48b1bb3d0826a686c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spotlight: {fileID: 367063323}
+  lightIntensities:
+  - 30
+  - 20
+  - 20
+  - 30
+  - 25
+  - 20
+  - 25
+  - 30
+  - 30
+  - 20
+  - 20
+  - 25
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 25
+  - 30
+  - 30
+  - 30
+  transitionDuration: 0.1
+  waitTime: 0.01
+  drag: 0.05
 --- !u!1 &376555447
 GameObject:
   m_ObjectHideFlags: 0
@@ -34812,6 +34853,7 @@ GameObject:
   - component: {fileID: 1316330200}
   - component: {fileID: 1316330202}
   - component: {fileID: 1316330201}
+  - component: {fileID: 1316330203}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -34922,6 +34964,46 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &1316330203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316330199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84532fa6aea45a48b1bb3d0826a686c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spotlight: {fileID: 1316330202}
+  lightIntensities:
+  - 30
+  - 20
+  - 20
+  - 30
+  - 25
+  - 20
+  - 25
+  - 30
+  - 30
+  - 20
+  - 20
+  - 25
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 25
+  - 30
+  - 30
+  - 30
+  transitionDuration: 0.1
+  waitTime: 0.01
+  drag: 0.05
 --- !u!1 &1317408911
 GameObject:
   m_ObjectHideFlags: 0
@@ -37057,6 +37139,63 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1001 &1398405826
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 99b7afc962773e044aae0311708e25dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -161.11836
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 99b7afc962773e044aae0311708e25dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 35.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 99b7afc962773e044aae0311708e25dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -45.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 99b7afc962773e044aae0311708e25dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 99b7afc962773e044aae0311708e25dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071069
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 99b7afc962773e044aae0311708e25dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 99b7afc962773e044aae0311708e25dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 99b7afc962773e044aae0311708e25dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 99b7afc962773e044aae0311708e25dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 99b7afc962773e044aae0311708e25dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 99b7afc962773e044aae0311708e25dd, type: 3}
+      propertyPath: m_Name
+      value: LightBeam
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 99b7afc962773e044aae0311708e25dd, type: 3}
 --- !u!43 &1409533955
 Mesh:
   m_ObjectHideFlags: 0
@@ -62765,6 +62904,7 @@ GameObject:
   - component: {fileID: 2037885520}
   - component: {fileID: 2037885522}
   - component: {fileID: 2037885521}
+  - component: {fileID: 2037885523}
   m_Layer: 0
   m_Name: Spot Light (2)
   m_TagString: Untagged
@@ -62875,6 +63015,46 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &2037885523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037885519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84532fa6aea45a48b1bb3d0826a686c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spotlight: {fileID: 2037885522}
+  lightIntensities:
+  - 30
+  - 20
+  - 20
+  - 30
+  - 25
+  - 20
+  - 25
+  - 30
+  - 30
+  - 20
+  - 20
+  - 25
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 30
+  - 25
+  - 30
+  - 30
+  - 30
+  transitionDuration: 0.1
+  waitTime: 0.01
+  drag: 0.05
 --- !u!4 &2040172923 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: faa850b2bc1c14f44bee98219969fc15, type: 3}
@@ -65814,6 +65994,7 @@ GameObject:
   - component: {fileID: 3316992657763923751}
   - component: {fileID: 9203870080529144944}
   - component: {fileID: 7783642028730776688}
+  - component: {fileID: 9203870080529144945}
   m_Layer: 0
   m_Name: Cylinder.002
   m_TagString: Untagged
@@ -66941,7 +67122,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7793857ac2ce22947a6af378f617cadd, type: 2}
+  - {fileID: 2100000, guid: d9951f88bb02e1946a84b6ad2e08da04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67313,7 +67494,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7793857ac2ce22947a6af378f617cadd, type: 2}
+  - {fileID: 2100000, guid: d9951f88bb02e1946a84b6ad2e08da04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67485,6 +67666,7 @@ GameObject:
   - component: {fileID: 6738450967530107482}
   - component: {fileID: 4109396432315084954}
   - component: {fileID: 7071182760447723569}
+  - component: {fileID: 8513859187189793209}
   m_Layer: 0
   m_Name: Cylinder.001
   m_TagString: Untagged
@@ -67492,6 +67674,46 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8513859187189793209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8513859187189793208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3995cd13c7bcf4484b69b02efff7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectRenderer: {fileID: 7071182760447723569}
+  emissionIntensities:
+  - 20
+  - 14
+  - 14
+  - 20
+  - 17
+  - 14
+  - 17
+  - 20
+  - 20
+  - 14
+  - 14
+  - 17
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 17
+  - 20
+  - 20
+  - 20
+  transitionDuration: 0.1
+  waitTime: 0.01
+  baseHexColor: '#80a8e3'
 --- !u!1 &8513859188974239788
 GameObject:
   m_ObjectHideFlags: 0
@@ -67680,12 +67902,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2490194675091097501}
   m_Mesh: {fileID: 8691780276856062721, guid: 5ade76d6ea59f7342aebc453d685d8df, type: 3}
+--- !u!114 &9203870080529144945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2490194675091097501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3995cd13c7bcf4484b69b02efff7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectRenderer: {fileID: 7071182760447723569}
+  emissionIntensities:
+  - 20
+  - 14
+  - 14
+  - 20
+  - 17
+  - 14
+  - 17
+  - 20
+  - 20
+  - 14
+  - 14
+  - 17
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 20
+  - 17
+  - 20
+  - 20
+  - 20
+  transitionDuration: 0.1
+  waitTime: 0.01
+  baseHexColor: '#80a8e3'
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 4660924225550470482}
   - {fileID: 1791200132}
+  - {fileID: 1151826500}
   - {fileID: 543450652482937388}
   - {fileID: 3950966994970006496}
   - {fileID: 4184565918438149029}
@@ -67710,7 +67973,6 @@ SceneRoots:
   - {fileID: 1584221601}
   - {fileID: 1013079586}
   - {fileID: 1990785383}
-  - {fileID: 1151826500}
   - {fileID: 3144304952728834677}
   - {fileID: 544011636}
   - {fileID: 1933341170}
@@ -67794,3 +68056,4 @@ SceneRoots:
   - {fileID: 1815299153}
   - {fileID: 8548977779302690156}
   - {fileID: 1063895113}
+  - {fileID: 1398405826}
