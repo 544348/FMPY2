@@ -61,7 +61,7 @@ public class MouseLook : MonoBehaviour
             else if(interactableObject.GetComponent<Interacable>() != null)
             {
                 interactableScript = interactableObject.GetComponent<Interacable>();
-             //   if (interactableScript.theType.interactableType == interactableScript.theType.computer)
+                if (interactableScript.interactableType == Interacable.theType.computer)
                 {
 
                 }
