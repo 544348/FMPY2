@@ -2193,6 +2193,13 @@ GameObject:
   - component: {fileID: 8991044664018350294}
   - component: {fileID: 4719512298865269410}
   - component: {fileID: 1055799975298174969}
+  - component: {fileID: 8017031333655335808}
+  - component: {fileID: 8597628314747516690}
+  - component: {fileID: 1539487680570045723}
+  - component: {fileID: 6925522109527473052}
+  - component: {fileID: 1838162384849520565}
+  - component: {fileID: 3981962331607939979}
+  - component: {fileID: 2757879834905068299}
   m_Layer: 0
   m_Name: Elevator
   m_TagString: Untagged
@@ -2351,6 +2358,205 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b87b1b3bc34fbf45986c0af783768ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &8017031333655335808
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7614768177063136942}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &8597628314747516690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7614768177063136942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2042f6c8647034b803f9aa119abfdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8991044664018350294}
+  audioSource: {fileID: 8017031333655335808}
+  soundToPlay: {fileID: 8300000, guid: 6b79260011d1aa0498a65a6ce89b14b8, type: 3}
+  stateNameToTrigger: ElevBoxAnim-DooropenTest
+  layerToCheck: 1
+--- !u!114 &1539487680570045723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7614768177063136942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2042f6c8647034b803f9aa119abfdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8991044664018350294}
+  audioSource: {fileID: 8017031333655335808}
+  soundToPlay: {fileID: 8300000, guid: 6b79260011d1aa0498a65a6ce89b14b8, type: 3}
+  stateNameToTrigger: Front doors close
+  layerToCheck: 1
+--- !u!114 &6925522109527473052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7614768177063136942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2042f6c8647034b803f9aa119abfdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8991044664018350294}
+  audioSource: {fileID: 8017031333655335808}
+  soundToPlay: {fileID: 8300000, guid: 6b79260011d1aa0498a65a6ce89b14b8, type: 3}
+  stateNameToTrigger: Back Doors Opening 0
+  layerToCheck: 1
+--- !u!114 &1838162384849520565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7614768177063136942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2042f6c8647034b803f9aa119abfdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8991044664018350294}
+  audioSource: {fileID: 8017031333655335808}
+  soundToPlay: {fileID: 8300000, guid: 6b79260011d1aa0498a65a6ce89b14b8, type: 3}
+  stateNameToTrigger: Back Doors Closing
+  layerToCheck: 1
+--- !u!114 &3981962331607939979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7614768177063136942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2042f6c8647034b803f9aa119abfdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8991044664018350294}
+  audioSource: {fileID: 8017031333655335808}
+  soundToPlay: {fileID: 8300000, guid: 670e92f275053ca4080c16e1a48eba9e, type: 3}
+  stateNameToTrigger: ElevatorGoingUpstart
+  layerToCheck: 0
+--- !u!114 &2757879834905068299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7614768177063136942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2042f6c8647034b803f9aa119abfdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8991044664018350294}
+  audioSource: {fileID: 8017031333655335808}
+  soundToPlay: {fileID: 8300000, guid: 670e92f275053ca4080c16e1a48eba9e, type: 3}
+  stateNameToTrigger: ElevatorTest
+  layerToCheck: 0
 --- !u!1 &7729183568630223741
 GameObject:
   m_ObjectHideFlags: 0
@@ -3366,7 +3572,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a2d3e921e89dc0543bea2da155c45dc9, type: 2}
     m_RemovedComponents:
     - {fileID: 3577861045809577527, guid: f55e68ee9c8ecd640ad21d53c2372009, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 826856550598440012, guid: f55e68ee9c8ecd640ad21d53c2372009, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f55e68ee9c8ecd640ad21d53c2372009, type: 3}
