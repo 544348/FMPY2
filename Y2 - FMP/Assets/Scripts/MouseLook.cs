@@ -63,6 +63,7 @@ public class MouseLook : MonoBehaviour
                 interactableScript = interactableObject.GetComponent<Interacable>();
                 if (interactableScript.interactableType == Interacable.theType.computer)
                 {
+                    interactableScript.ComputerFunction();
 
                 }
             }
@@ -78,7 +79,7 @@ public class MouseLook : MonoBehaviour
 
             Debug.Log("Raycast has hit" + interactableHit.collider.name);
             Debug.Log("Raycast has hit" + interactableHit.collider.gameObject.layer);
-            meshRen = interactableHit.collider.gameObject.GetComponent<MeshRenderer>();
+            meshRen = interactableHit.collider.gameObject.GetComponent<Outline>().meshRenderer;
             meshRen.materials = interactableHit.collider.gameObject.GetComponent<Outline>().defaultAndOutline;
             lastInteractableObjectLookedAt = interactableHit.collider.gameObject;
         }
