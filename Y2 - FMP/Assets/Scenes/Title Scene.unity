@@ -7509,7 +7509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 978003096}
-  fullText: Settings menu
+  fullText: Settings
   typingSpeed: 0.02
   startDelay: 0.8
 --- !u!114 &1777943082

@@ -2581,6 +2581,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5748583371098580615}
+  - component: {fileID: 2662936730970980780}
   m_Layer: 0
   m_Name: TrussPrefab 1
   m_TagString: Untagged
@@ -2608,6 +2609,27 @@ Transform:
   - {fileID: 8758231948370002587}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!65 &2662936730970980780
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668192750298913574}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4446507, y: 15.649532, z: 1.636692}
+  m_Center: {x: 0.035042107, y: 4.429159, z: 0.009090662}
 --- !u!1 &3859618408944537517
 GameObject:
   m_ObjectHideFlags: 0
