@@ -9,6 +9,8 @@ public class BasicTextWriter : MonoBehaviour
     public float typingSpeed = 0.1f;      // Speed of typing (seconds per character)
     public float startDelay = 1f;         // Delay before typing starts (in seconds)
 
+    public bool isWorldSpace = false;
+
     private void Start()
     {
         // Ensure the TextMeshProUGUI component is assigned
@@ -25,10 +27,10 @@ public class BasicTextWriter : MonoBehaviour
     {
         // Ensure the TextMeshProUGUI component is assigned
         if (textComponent == null)
-            textComponent = GetComponent<TextMeshProUGUI>();
+        textComponent = GetComponent<TextMeshProUGUI>();
 
         // Start the typing coroutine
-        if (textComponent != null && !string.IsNullOrEmpty(fullText))
+        if (textComponent != null && !string.IsNullOrEmpty(fullText) && isWorldSpace)
         {
             StartCoroutine(TypeText());
         }

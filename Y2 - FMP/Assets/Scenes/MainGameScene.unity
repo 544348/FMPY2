@@ -5354,6 +5354,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1541845850}
+    - target: {fileID: 6235727468635994994, guid: 0da00214120e67a4b8f5a62874834a91, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ce3e1a15210d78440a9a5e92a97babed, type: 2}
     - target: {fileID: 6422335584431091286, guid: 0da00214120e67a4b8f5a62874834a91, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -7023,6 +7027,7 @@ MonoBehaviour:
   fullText: User ID  ;; 2493456
   typingSpeed: 0.05
   startDelay: 2.5
+  isWorldSpace: 1
 --- !u!1001 &273380391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40223,6 +40228,7 @@ MonoBehaviour:
   fullText: Employee ;; Verusya Vasiliev
   typingSpeed: 0.05
   startDelay: 0
+  isWorldSpace: 1
 --- !u!1001 &1416732279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62629,6 +62635,7 @@ MonoBehaviour:
   fullText: '- - - - - - - - - - - - - - -'
   typingSpeed: 0.05
   startDelay: 4
+  isWorldSpace: 1
 --- !u!1 &1913369499
 GameObject:
   m_ObjectHideFlags: 0
