@@ -10,6 +10,8 @@ public class MouseLook : MonoBehaviour
     public float mouseSensitivity = 100f;
 
     public Transform playerBody;
+    public GameObject player;
+    public Transform camDefaultTransform;
 
     float xRotation = 0f;
     float yRotation = 0f;
@@ -31,15 +33,38 @@ public class MouseLook : MonoBehaviour
     private GameObject lastInteractableObjectLookedAt;
     private MeshRenderer meshRen;
     public Material[] theMaterials;
+
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
+    public IEnumerator ResetCameraToDefault()
+    {
+        gameObject.transform.parent = player.transform;
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(CamMove(camDefaultTransform.localPosition, camDefaultTransform.localEulerAngles));
+        Debug.LogWarning(camDefaultTransform.localPosition + camDefaultTransform.localEulerAngles);
+        Debug.LogWarning("warningtest 1");
+        canMove = true;
+    }
     private IEnumerator CamMove(Vector3 position, Vector3 rotation)
     {
-        camera.transform.position = position;
+        yield return new WaitForSeconds(0.1f);
+        camera.transform.localPosition = position;
         yield return new WaitForSeconds(0.1f);
         camera.transform.eulerAngles = rotation;
+        Debug.Log("rotation should be " + rotation);
+        Debug.LogError("test2");
+    }
+    private IEnumerator PlayerMove(Vector3 position, Vector3 rotation)
+    {
+        player.transform.localPosition = position;
+        Debug.LogError("test3");
+        yield return new WaitForSeconds(0.1f);
+        Debug.LogError("test4");
+        player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+        player.transform.eulerAngles = rotation;
         Debug.Log("rotation should be " + rotation);
     }
     private void CamLock()
@@ -52,7 +77,7 @@ public class MouseLook : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.V))
         {
-            CamMove(camLockObject.transform.position, camLockObject.transform.localEulerAngles);
+            StartCoroutine(ResetCameraToDefault());
         }
         if (canMove)
         {
@@ -84,7 +109,10 @@ public class MouseLook : MonoBehaviour
                     if (interactableScript.interactableType == Interacable.theType.computer)
                     {
                         CamLock();
-                        StartCoroutine(CamMove(interactableObject.transform.GetChild(8).transform.position, interactableObject.transform.GetChild(8).transform.eulerAngles)); 
+                        gameObject.transform.parent = null;
+                        StartCoroutine(CamMove(interactableObject.transform.GetChild(8).transform.position, interactableObject.transform.GetChild(8).transform.eulerAngles));
+                        StartCoroutine(PlayerMove(interactableObject.transform.GetChild(9).transform.position, interactableObject.transform.GetChild(9).transform.eulerAngles));
+                        Debug.LogError("test");
                         interactableScript.ComputerFunction();
 
 

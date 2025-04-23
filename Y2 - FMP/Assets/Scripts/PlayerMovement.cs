@@ -37,6 +37,10 @@ public class PlayerMovement : MonoBehaviour
         {
             elevatorAnimator.SetTrigger("ExitElevator");
         }
+        if(other.gameObject.tag == "DoorTrigger")
+        {
+            other.transform.parent.gameObject.GetComponent<door>().ToggleDoor();
+        }
     }
 
     public void CompleteTask(string taskName, string newTask)
