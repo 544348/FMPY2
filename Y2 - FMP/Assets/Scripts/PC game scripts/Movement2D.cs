@@ -1,6 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
-
+public enum KeyType
+{
+    Red,
+    Blue,
+    Green
+}
 [RequireComponent(typeof(Rigidbody))]
+
 public class Movement2D : MonoBehaviour
 {
     [Header("Movement")]
@@ -21,10 +28,10 @@ public class Movement2D : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.2f;
 
     [Header("Key Collection")]
-    public bool hasKey = false;
-    private Transform collectedKey;
-    [SerializeField] private Vector3 keyOffset = new Vector3(0.5f, 1.2f, 0f);  // Distance from the player
-    [SerializeField] private float keyDistance = 1.0f;  // Adjustable distance for key to follow player
+    public List<KeyType> collectedKeys = new List<KeyType>();
+    private Transform collectedKeyVisual;
+    [SerializeField] private Vector3 keyOffset = new Vector3(0.5f, 1.2f, 0f);
+    [SerializeField] private float keyDistance = 1.0f;
 
     private Rigidbody rb;
     private Vector3 velocity;
@@ -35,50 +42,36 @@ public class Movement2D : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
     }
-
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        // Ground check using two positions
         isGrounded = Physics.CheckSphere(groundCheck1.position, groundCheckRadius, groundLayer) ||
                      Physics.CheckSphere(groundCheck2.position, groundCheckRadius, groundLayer);
 
-        // Reset vertical velocity if grounded
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
 
-        // Jump input
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpForce * 2f * gravity);
         }
 
-        // Apply gravity
         if (velocity.y < 0)
-        {
             velocity.y -= gravity * fallMultiplier * Time.deltaTime;
-        }
         else if (velocity.y > 0 && !Input.GetButton("Jump"))
-        {
             velocity.y -= gravity * lowJumpMultiplier * Time.deltaTime;
-        }
         else
-        {
             velocity.y -= gravity * Time.deltaTime;
-        }
 
-        // Update key position if collected
-        if (hasKey && collectedKey != null)
+        if (collectedKeyVisual != null)
         {
-            // Key follows the player but only updates the X and Y positions
             Vector3 keyPosition = transform.position + new Vector3(keyOffset.x, keyOffset.y, 0f);
-            keyPosition.x += (isFacingRight ? keyDistance : -keyDistance);  // Adjust distance based on direction
-            keyPosition.z = collectedKey.position.z;  // Maintain Z position
-
-            collectedKey.position = keyPosition;
+            keyPosition.x += (isFacingRight ? keyDistance : -keyDistance);
+            keyPosition.z = collectedKeyVisual.position.z;
+            collectedKeyVisual.position = keyPosition;
         }
 
         Flip();
@@ -86,7 +79,6 @@ public class Movement2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Apply horizontal movement + gravity
         Vector3 move = new Vector3(horizontal * speed, velocity.y, 0f);
         rb.linearVelocity = move;
     }
@@ -104,18 +96,29 @@ public class Movement2D : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!hasKey && other.CompareTag("LevelKey"))
+        if (other.CompareTag("LevelKey"))
         {
-            hasKey = true;
-            collectedKey = other.transform;
+            KeyItem keyItem = other.GetComponent<KeyItem>();
+            if (keyItem != null && !collectedKeys.Contains(keyItem.keyType))
+            {
+                collectedKeys.Add(keyItem.keyType);
+                collectedKeyVisual = other.transform;
 
-            // Optional: disable physics on the key
-            Rigidbody keyRb = collectedKey.GetComponent<Rigidbody>();
-            if (keyRb != null) keyRb.isKinematic = true;
+                Rigidbody keyRb = collectedKeyVisual.GetComponent<Rigidbody>();
+                if (keyRb != null) keyRb.isKinematic = true;
 
-            // Optional: disable collider so it doesn’t interfere
-            Collider keyCollider = collectedKey.GetComponent<Collider>();
-            if (keyCollider != null) keyCollider.enabled = false;
+                Collider keyCollider = collectedKeyVisual.GetComponent<Collider>();
+                if (keyCollider != null) keyCollider.enabled = false;
+            }
+        }
+
+        if (other.CompareTag("DoorTrigger"))
+        {
+            DoorTrigger trigger = other.GetComponent<DoorTrigger>();
+            if (trigger != null && collectedKeys.Contains(trigger.requiredKey))
+            {
+                trigger.ActivateDoor();
+            }
         }
     }
 
