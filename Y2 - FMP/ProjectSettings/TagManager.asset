@@ -9,6 +9,7 @@ TagManager:
   - Button
   - DoorTrigger
   - LevelKey
+  - DoorOpenTrigger
   layers:
   - Default
   - TransparentFX

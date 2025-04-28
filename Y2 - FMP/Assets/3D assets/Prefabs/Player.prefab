@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 5535068909977949064}
   - component: {fileID: 5415579533736544743}
   - component: {fileID: 5852594136918497767}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: VFXgraph_RTPainterTut
   m_TagString: Untagged
   m_Icon: {fileID: 0}

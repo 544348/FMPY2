@@ -45,7 +45,7 @@ public class MouseLook : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         StartCoroutine(CamMove(camDefaultTransform.localPosition, camDefaultTransform.localEulerAngles));
         Debug.LogWarning(camDefaultTransform.localPosition + camDefaultTransform.localEulerAngles);
-        Debug.LogWarning("warningtest 1");
+    //    Debug.LogWarning("warningtest 1");
         canMove = true;
     }
     private IEnumerator CamMove(Vector3 position, Vector3 rotation)
@@ -55,14 +55,14 @@ public class MouseLook : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         camera.transform.eulerAngles = rotation;
         Debug.Log("rotation should be " + rotation);
-        Debug.LogError("test2");
+     //   Debug.LogError("test2");
     }
     private IEnumerator PlayerMove(Vector3 position, Vector3 rotation)
     {
         player.transform.localPosition = position;
-        Debug.LogError("test3");
+      //  Debug.LogError("test3");
         yield return new WaitForSeconds(0.1f);
-        Debug.LogError("test4");
+      //  Debug.LogError("test4");
         player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         player.transform.eulerAngles = rotation;
         Debug.Log("rotation should be " + rotation);
@@ -112,7 +112,7 @@ public class MouseLook : MonoBehaviour
                         gameObject.transform.parent = null;
                         StartCoroutine(CamMove(interactableObject.transform.GetChild(8).transform.position, interactableObject.transform.GetChild(8).transform.eulerAngles));
                         StartCoroutine(PlayerMove(interactableObject.transform.GetChild(9).transform.position, interactableObject.transform.GetChild(9).transform.eulerAngles));
-                        Debug.LogError("test");
+                      //  Debug.LogError("test");
                         interactableScript.ComputerFunction();
 
 
