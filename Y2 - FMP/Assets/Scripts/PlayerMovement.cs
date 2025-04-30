@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.Device;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator elevatorAnimator;
 
+    public GameObject deleteScriptRunnerObj;
+
     private void Start()
     {
         taskList.Add("interactWithComputer", false);
@@ -40,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         if(other.gameObject.tag == "DoorTrigger")
         {
             other.transform.parent.gameObject.GetComponent<door>().ToggleDoor();
+            deleteScriptRunnerObj.SetActive(true);
         }
     }
 

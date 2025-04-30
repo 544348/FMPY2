@@ -1,18 +1,21 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Interacable : MonoBehaviour
 {
-    public enum theType{button, computer, interactable}
+    public enum theType{button, computer, interactable, NPC}
     public theType interactableType = theType.interactable;
     private GameObject screen;
     private tasks tasksScript;
     private float timer;
     public float timerInterval;
     private bool timerIsActive = false;
+    public bool isComputer2;
     private GameObject camera;
     public GameObject theDoor;
     private MouseLook cameraLookScript;
+    public AudioSource audio;
 
     void Start()
     {
@@ -27,15 +30,27 @@ public class Interacable : MonoBehaviour
     }
    
 
-    public void ComputerFunction()
+    public IEnumerator ComputerFunction()
     {
         timerIsActive = true;
         Debug.Log("computer is active");
+        yield return new WaitForSeconds(1.4f);
         screen.SetActive(true);
         tasksScript.CompleteTask("Interact with the computer");
-
+        if(isComputer2)
+        {
+            yield return new WaitForSeconds(1.4f);
+            SceneManager.LoadScene("ComputerDesktop");
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
-
+    public IEnumerator NPCFunction()
+    {
+        audio.Play();
+        yield return new WaitUntil(() => !audio.isPlaying);
+        Debug.Log("audio is finished");
+        StartCoroutine(cameraLookScript.ResetCameraToDefault());
+    }
    
 
     // Update is called once per frame

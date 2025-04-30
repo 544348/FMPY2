@@ -113,7 +113,18 @@ public class MouseLook : MonoBehaviour
                         StartCoroutine(CamMove(interactableObject.transform.GetChild(8).transform.position, interactableObject.transform.GetChild(8).transform.eulerAngles));
                         StartCoroutine(PlayerMove(interactableObject.transform.GetChild(9).transform.position, interactableObject.transform.GetChild(9).transform.eulerAngles));
                       //  Debug.LogError("test");
-                        interactableScript.ComputerFunction();
+                        StartCoroutine(interactableScript.ComputerFunction());
+
+
+                    }
+                    if (interactableScript.interactableType == Interacable.theType.NPC)
+                    {
+                        CamLock();
+                        gameObject.transform.parent = null;
+                        StartCoroutine(CamMove(interactableObject.transform.GetChild(0).transform.position, interactableObject.transform.GetChild(0).transform.eulerAngles));
+                        StartCoroutine(PlayerMove(interactableObject.transform.GetChild(1).transform.position, interactableObject.transform.GetChild(1).transform.eulerAngles));
+                        //  Debug.LogError("test");
+                        StartCoroutine(interactableScript.NPCFunction());
 
 
                     }

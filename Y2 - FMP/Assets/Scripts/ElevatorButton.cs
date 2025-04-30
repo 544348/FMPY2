@@ -11,7 +11,7 @@ public class ElevatorButton : MonoBehaviour
     public void ButtonPress()
     {
         elevatorAnimator.SetTrigger("ButtonPress");
-        tasksScript.CompleteTask("Call the elevator");
+        tasksScript.CompleteTask("Press the button");
     }
     // Update is called once per frame
     void Update()

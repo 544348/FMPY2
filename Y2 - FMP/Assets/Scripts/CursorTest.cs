@@ -7,8 +7,12 @@ public class CursorTest : MonoBehaviour
 {
     public Sprite cursorArrow;
     public Sprite cursorArrowUpdate;
+    public GameObject ClampLeft;
+    public GameObject ClampRight;
+    public GameObject ClampTop;
+    public GameObject ClampBottom;
 
-    [SerializeField] private GameObject CursorSprite;
+ [SerializeField] private GameObject CursorSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +24,9 @@ public class CursorTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CursorSprite.transform.position = Input.mousePosition;
-
+       //  CursorSprite.transform.position = Input.mousePosition;
+        Vector3 cursorPosition = new Vector2(Mathf.Clamp(Input.mousePosition.x , ClampLeft.transform.position.x , ClampRight.transform.position.x), Mathf.Clamp(Input.mousePosition.y , ClampBottom.transform.position.y , ClampTop.transform.position.y));
+        CursorSprite.transform.position = cursorPosition;
         // updates to down arrow
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
