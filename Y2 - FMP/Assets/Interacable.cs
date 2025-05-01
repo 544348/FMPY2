@@ -8,14 +8,20 @@ public class Interacable : MonoBehaviour
     public theType interactableType = theType.interactable;
     private GameObject screen;
     private tasks tasksScript;
+
     private float timer;
     public float timerInterval;
+
     private bool timerIsActive = false;
     public bool isComputer2;
+
     private GameObject camera;
     public GameObject theDoor;
+    public GameObject DeleteOutlineObject;
+
     private MouseLook cameraLookScript;
     public AudioSource audio;
+    public Animator NPCanimator;
 
     void Start()
     {
@@ -47,8 +53,20 @@ public class Interacable : MonoBehaviour
     public IEnumerator NPCFunction()
     {
         audio.Play();
+        if (DeleteOutlineObject != null)
+        {
+            DeleteOutlineObject.SetActive(false);
+        }
+        if (NPCanimator != null)
+        {
+            NPCanimator.SetTrigger("CutscenePlaying");
+        }
         yield return new WaitUntil(() => !audio.isPlaying);
         Debug.Log("audio is finished");
+        if (NPCanimator != null)
+        {
+            NPCanimator.ResetTrigger("CutscenePlaying");
+        }
         StartCoroutine(cameraLookScript.ResetCameraToDefault());
     }
    
