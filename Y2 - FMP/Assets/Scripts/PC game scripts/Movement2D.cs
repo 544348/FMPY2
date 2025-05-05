@@ -36,6 +36,7 @@ public class Movement2D : MonoBehaviour
     private Rigidbody rb;
     private Vector3 velocity;
     private bool isGrounded;
+    [SerializeField]private Animator animator;
 
     void Start()
     {
@@ -45,7 +46,14 @@ public class Movement2D : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-
+        if (horizontal > 0 || horizontal < 0)
+        {
+            animator.SetBool("moving" , true);
+        } 
+        else if (horizontal == 0)
+        {
+            animator.SetBool("moving", false);
+        }
         isGrounded = Physics.CheckSphere(groundCheck1.position, groundCheckRadius, groundLayer) ||
                      Physics.CheckSphere(groundCheck2.position, groundCheckRadius, groundLayer);
 

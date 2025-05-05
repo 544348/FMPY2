@@ -10,6 +10,7 @@ TagManager:
   - DoorTrigger
   - LevelKey
   - DoorOpenTrigger
+  - LevelEnding
   layers:
   - Default
   - TransparentFX
