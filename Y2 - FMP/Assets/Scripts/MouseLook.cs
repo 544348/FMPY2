@@ -31,7 +31,8 @@ public class MouseLook : MonoBehaviour
     public bool canMove = true;
 
     private GameObject lastInteractableObjectLookedAt;
-    private MeshRenderer meshRen;
+    public MeshRenderer meshRen;
+    public SkinnedMeshRenderer skinnedMeshRen;
     public Material[] theMaterials;
 
 
@@ -71,6 +72,19 @@ public class MouseLook : MonoBehaviour
     {
         canMove = false;
     }
+    public void DisableCurrentOutline()
+    {
+        Debug.Log("outline should be disabled");
+       // interactableObject = null;
+        if (meshRen != null)
+        {
+            meshRen.materials = interactableObject.GetComponent<Outline>().defaultMaterials;
+        }
+        else if (skinnedMeshRen != null)
+        {
+            skinnedMeshRen.materials = interactableObject.GetComponent<Outline>().defaultMaterials;
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -101,31 +115,34 @@ public class MouseLook : MonoBehaviour
                     if (interactableObjectHit.collider.gameObject.tag == "Button")
                     {
                         interactableObject = interactableObjectHit.collider.gameObject;
+                        // interactableObject.GetComponent<Outline>().isInteractable = false;
                     }
                 }
                 else if (interactableObject.GetComponent<Interacable>() != null)
                 {
-                    interactableScript = interactableObject.GetComponent<Interacable>();
-                    if (interactableScript.interactableType == Interacable.theType.computer)
+                    if(interactableObject.GetComponent<Interacable>().isInteractable)
                     {
-                        CamLock();
-                        gameObject.transform.parent = null;
-                        StartCoroutine(CamMove(interactableObject.transform.GetChild(8).transform.position, interactableObject.transform.GetChild(8).transform.eulerAngles));
-                        StartCoroutine(PlayerMove(interactableObject.transform.GetChild(9).transform.position, interactableObject.transform.GetChild(9).transform.eulerAngles));
-                      //  Debug.LogError("test");
-                        StartCoroutine(interactableScript.ComputerFunction());
+                        interactableScript = interactableObject.GetComponent<Interacable>();
+                        if (interactableScript.interactableType == Interacable.theType.computer)
+                        {
+                            CamLock();
+                            gameObject.transform.parent = null;
+                            StartCoroutine(CamMove(interactableObject.transform.GetChild(8).transform.position, interactableObject.transform.GetChild(8).transform.eulerAngles));
+                            StartCoroutine(PlayerMove(interactableObject.transform.GetChild(9).transform.position, interactableObject.transform.GetChild(9).transform.eulerAngles));
+                          //  Debug.LogError("test");
+                            StartCoroutine(interactableScript.ComputerFunction());
 
 
-                    }
-                    if (interactableScript.interactableType == Interacable.theType.NPC)
-                    {
-                        CamLock();
-                        gameObject.transform.parent = null;
-                        StartCoroutine(CamMove(interactableObject.transform.GetChild(0).transform.position, interactableObject.transform.GetChild(0).transform.eulerAngles));
-                        StartCoroutine(PlayerMove(interactableObject.transform.GetChild(1).transform.position, interactableObject.transform.GetChild(1).transform.eulerAngles));
-                        //  Debug.LogError("test");
-                        StartCoroutine(interactableScript.NPCFunction());
-
+                        }
+                        if (interactableScript.interactableType == Interacable.theType.NPC)
+                        {
+                            CamLock();
+                            gameObject.transform.parent = null;
+                            StartCoroutine(CamMove(interactableObject.transform.GetChild(0).transform.position, interactableObject.transform.GetChild(0).transform.eulerAngles));
+                            StartCoroutine(PlayerMove(interactableObject.transform.GetChild(1).transform.position, interactableObject.transform.GetChild(1).transform.eulerAngles));
+                            //  Debug.LogError("test");
+                            StartCoroutine(interactableScript.NPCFunction());
+                        }
 
                     }
                 }
@@ -138,21 +155,57 @@ public class MouseLook : MonoBehaviour
             if (interactableHit.collider != null)
             {
                 interactableObject = interactableHit.collider.gameObject;
-
-                Debug.Log("Raycast has hit" + interactableHit.collider.name);
-                Debug.Log("Raycast has hit" + interactableHit.collider.gameObject.layer);
-                meshRen = interactableHit.collider.gameObject.GetComponent<Outline>().meshRenderer;
-                meshRen.materials = interactableHit.collider.gameObject.GetComponent<Outline>().defaultAndOutline;
-                lastInteractableObjectLookedAt = interactableHit.collider.gameObject;
+                if (interactableObject.GetComponent<Interacable>() != null)
+                {
+                    if (interactableObject.GetComponent<Interacable>().isInteractable)
+                    {
+                            Debug.Log("Raycast has hit" + interactableHit.collider.name);
+                        Debug.Log("Raycast has hit" + interactableHit.collider.gameObject.layer);
+                        if (interactableHit.collider.gameObject.GetComponent<Outline>().meshRenderer != null)
+                        {
+                            meshRen = interactableHit.collider.gameObject.GetComponent<Outline>().meshRenderer;
+                            meshRen.materials = interactableHit.collider.gameObject.GetComponent<Outline>().defaultAndOutline;
+                        }
+                        else if (interactableHit.collider.gameObject.GetComponent<Outline>().skinnedMeshRenderer != null)
+                        {
+                            skinnedMeshRen = interactableHit.collider.gameObject.GetComponent<Outline>().skinnedMeshRenderer;
+                            skinnedMeshRen.materials = interactableHit.collider.gameObject.GetComponent<Outline>().defaultAndOutline;
+                        }
+                        lastInteractableObjectLookedAt = interactableHit.collider.gameObject;
+                    }
+                }
+                else if (interactableObject.GetComponent<Outline>() != null)
+                {
+                    if (interactableObject.GetComponent<Outline>().isInteractable)
+                    {
+                        Debug.Log("Raycast has hit" + interactableHit.collider.name);
+                        Debug.Log("Raycast has hit" + interactableHit.collider.gameObject.layer);
+                        if (interactableHit.collider.gameObject.GetComponent<Outline>().meshRenderer != null)
+                        {
+                            meshRen = interactableHit.collider.gameObject.GetComponent<Outline>().meshRenderer;
+                            meshRen.materials = interactableHit.collider.gameObject.GetComponent<Outline>().defaultAndOutline;
+                        }
+                        else if (interactableHit.collider.gameObject.GetComponent<Outline>().skinnedMeshRenderer != null)
+                        {
+                            skinnedMeshRen = interactableHit.collider.gameObject.GetComponent<Outline>().skinnedMeshRenderer;
+                            skinnedMeshRen.materials = interactableHit.collider.gameObject.GetComponent<Outline>().defaultAndOutline;
+                        }
+                        lastInteractableObjectLookedAt = interactableHit.collider.gameObject;
+                    }
+                }
             }
             else
             {
-                Debug.Log("Looking at different object");
-                interactableObject = null;
-                if (meshRen != null)
-                {
-                    meshRen.materials = lastInteractableObjectLookedAt.GetComponent<Outline>().defaultMaterials;
-                }
+                    Debug.Log("Looking at different object");
+                    interactableObject = null;
+                    if (meshRen != null)
+                    {
+                        meshRen.materials = lastInteractableObjectLookedAt.GetComponent<Outline>().defaultMaterials;
+                    }
+                    else if (skinnedMeshRen != null)
+                    {
+                        skinnedMeshRen.materials = lastInteractableObjectLookedAt.GetComponent<Outline>().defaultMaterials;
+                    }
             }
         }
         

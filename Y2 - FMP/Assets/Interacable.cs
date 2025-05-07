@@ -8,12 +8,14 @@ public class Interacable : MonoBehaviour
     public theType interactableType = theType.interactable;
     private GameObject screen;
     private tasks tasksScript;
+    private MouseLook mouseLookScript;
 
     private float timer;
     public float timerInterval;
 
     private bool timerIsActive = false;
     public bool isComputer2;
+    public bool isInteractable = true;
 
     private GameObject camera;
     public GameObject theDoor;
@@ -25,6 +27,7 @@ public class Interacable : MonoBehaviour
 
     void Start()
     {
+        mouseLookScript = GameObject.Find("Main Camera").GetComponent<MouseLook>();
         camera = Camera.main.gameObject;
         cameraLookScript = camera.GetComponent<MouseLook>();
         tasksScript = GameObject.Find("TaskCanvas").GetComponent<tasks>();
@@ -38,54 +41,81 @@ public class Interacable : MonoBehaviour
 
     public IEnumerator ComputerFunction()
     {
-        timerIsActive = true;
-        Debug.Log("computer is active");
-        yield return new WaitForSeconds(1.4f);
-        screen.SetActive(true);
-        tasksScript.CompleteTask("Interact with the computer");
-        if(isComputer2)
+        if (isInteractable)
         {
+            timerIsActive = true;
+            Debug.Log("computer is active");
             yield return new WaitForSeconds(1.4f);
-            SceneManager.LoadScene("ComputerDesktop");
-            Cursor.lockState = CursorLockMode.None;
+            screen.SetActive(true);
+            tasksScript.CompleteTask("Interact with the computer");
+            if (isComputer2)
+            {
+                yield return new WaitForSeconds(1.4f);
+                SceneManager.LoadScene("ComputerDesktop");
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
+    }
+    public void DisableCurrentOutline()
+    {
+        Debug.Log("outline should be disabled");
+        // interactableObject = null;
+        if (mouseLookScript.meshRen != null)
+        {
+            Debug.Log("Outline should be default material");
+            mouseLookScript.meshRen.materials = gameObject.GetComponent<Outline>().defaultMaterials;
+        }
+        if (mouseLookScript.skinnedMeshRen != null)
+        {
+            Debug.Log("Outline should be default material");
+            mouseLookScript.skinnedMeshRen.materials = gameObject.GetComponent<Outline>().defaultMaterials;
         }
     }
     public IEnumerator NPCFunction()
     {
-        audio.Play();
-        if (DeleteOutlineObject != null)
+        if (isInteractable)
         {
-            DeleteOutlineObject.SetActive(false);
+            audio.Play();
+            if (DeleteOutlineObject != null)
+            {
+                DeleteOutlineObject.SetActive(false);
+            }
+            if (NPCanimator != null)
+            {
+                NPCanimator.SetTrigger("CutscenePlaying");
+            }
+            yield return new WaitUntil(() => !audio.isPlaying);
+            Debug.Log("audio is finished");
+            if (NPCanimator != null)
+            {
+                NPCanimator.ResetTrigger("CutscenePlaying");
+            }
+            StartCoroutine(cameraLookScript.ResetCameraToDefault());
+            tasksScript.CompleteTask("Interact with the receptionist");
+            DisableCurrentOutline();
+            isInteractable = false;
         }
-        if (NPCanimator != null)
-        {
-            NPCanimator.SetTrigger("CutscenePlaying");
-        }
-        yield return new WaitUntil(() => !audio.isPlaying);
-        Debug.Log("audio is finished");
-        if (NPCanimator != null)
-        {
-            NPCanimator.ResetTrigger("CutscenePlaying");
-        }
-        StartCoroutine(cameraLookScript.ResetCameraToDefault());
     }
    
 
     // Update is called once per frame
     void Update()
     {
-        if(timerIsActive)
+        if (isInteractable)
         {
-            timer += Time.deltaTime;
-            if(timer >= timerInterval)
+            if (timerIsActive)
             {
-                cameraLookScript.StartCoroutine(cameraLookScript.ResetCameraToDefault());
-                if(theDoor != null)
+                timer += Time.deltaTime;
+                if (timer >= timerInterval)
                 {
-                    theDoor.GetComponent<door>().ToggleDoor();
+                    cameraLookScript.StartCoroutine(cameraLookScript.ResetCameraToDefault());
+                    if (theDoor != null)
+                    {
+                        theDoor.GetComponent<door>().ToggleDoor();
+                    }
+                    timerIsActive = false;
+                    timer = 0;
                 }
-                timerIsActive = false;
-                timer = 0;
             }
         }
     }

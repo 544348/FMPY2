@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = -9.81f;
 
     public GameObject playerCameraObject;
+    public tasks taskScript;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -39,11 +40,17 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.tag == "ExitElevator")
         {
             elevatorAnimator.SetTrigger("ExitElevator");
+            taskScript.ToggleTaskList();
+            Destroy(other.gameObject);
         }
         if(other.gameObject.tag == "DoorTrigger")
         {
             other.transform.parent.gameObject.GetComponent<door>().ToggleDoor();
             deleteScriptRunnerObj.SetActive(true);
+        }
+        if(other.gameObject.tag == "TaskToggle")
+        {
+            taskScript.ToggleTaskList();
         }
     }
 

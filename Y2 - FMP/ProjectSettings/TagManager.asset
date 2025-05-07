@@ -11,6 +11,7 @@ TagManager:
   - LevelKey
   - DoorOpenTrigger
   - LevelEnding
+  - TaskToggle
   layers:
   - Default
   - TransparentFX

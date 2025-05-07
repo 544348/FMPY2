@@ -7,8 +7,9 @@ public class tasks : MonoBehaviour
 {
 
     public Dictionary<string, bool> taskList = new Dictionary<string, bool>();
-    private int currentTask = 0;
+    public int currentTask = 0;
     public string[] theTasks;
+    public GameObject taskPanel;
     public TextMeshProUGUI text;
     public Color notComplete;
     public Color isComplete;
@@ -29,7 +30,10 @@ public class tasks : MonoBehaviour
         text.text = "currentTask: " + theTasks[currentTask];
         text.color = notComplete;
     }
-
+    public void ToggleTaskList()
+    {
+        taskPanel.SetActive(!taskPanel.activeSelf);
+    }
     public void CompleteTask(string taskName)
     {
         if (taskList[taskName] == true)
