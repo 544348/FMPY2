@@ -12,6 +12,7 @@ TagManager:
   - DoorOpenTrigger
   - LevelEnding
   - TaskToggle
+  - Cursor
   layers:
   - Default
   - TransparentFX

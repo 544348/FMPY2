@@ -13,6 +13,7 @@ public class tasks : MonoBehaviour
     public TextMeshProUGUI text;
     public Color notComplete;
     public Color isComplete;
+    
 
     void Start()
     {

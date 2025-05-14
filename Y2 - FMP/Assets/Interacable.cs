@@ -20,6 +20,7 @@ public class Interacable : MonoBehaviour
     private GameObject camera;
     public GameObject theDoor;
     public GameObject DeleteOutlineObject;
+    public GameObject arrow;
 
     private MouseLook cameraLookScript;
     public AudioSource audio;
@@ -50,6 +51,8 @@ public class Interacable : MonoBehaviour
             tasksScript.CompleteTask("Interact with the computer");
             if (isComputer2)
             {
+                arrow.SetActive(false);
+                tasksScript.CompleteTask("Interact with your computer");
                 yield return new WaitForSeconds(1.4f);
                 SceneManager.LoadScene("ComputerDesktop");
                 Cursor.lockState = CursorLockMode.None;
@@ -85,6 +88,7 @@ public class Interacable : MonoBehaviour
                 NPCanimator.SetTrigger("CutscenePlaying");
             }
             yield return new WaitUntil(() => !audio.isPlaying);
+            arrow.SetActive(true);
             Debug.Log("audio is finished");
             if (NPCanimator != null)
             {
@@ -93,6 +97,7 @@ public class Interacable : MonoBehaviour
             StartCoroutine(cameraLookScript.ResetCameraToDefault());
             tasksScript.CompleteTask("Interact with the receptionist");
             DisableCurrentOutline();
+            tasksScript.taskList.Add("Interact with your computer", false);
             isInteractable = false;
         }
     }
