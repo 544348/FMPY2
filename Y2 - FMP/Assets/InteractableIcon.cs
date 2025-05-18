@@ -1,4 +1,7 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InteractableIcon : MonoBehaviour
 {
@@ -6,6 +9,7 @@ public class InteractableIcon : MonoBehaviour
     private bool mouseIsHoveringOverIcon;
     public GameObject window;
     public GameObject objectsInRecyclingBin;
+    public string sceneName;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Cursor"))
@@ -25,6 +29,11 @@ public class InteractableIcon : MonoBehaviour
     private void ClearRecyclingBin()
     {
         objectsInRecyclingBin.SetActive(false);
+    }
+    private void OpenComputerGame()
+    {
+       // yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(sceneName);
     }
     private void OnTriggerExit(Collider other)
     {
