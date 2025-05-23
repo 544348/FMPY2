@@ -13,6 +13,7 @@ TagManager:
   - LevelEnding
   - TaskToggle
   - Cursor
+  - Coin
   layers:
   - Default
   - TransparentFX

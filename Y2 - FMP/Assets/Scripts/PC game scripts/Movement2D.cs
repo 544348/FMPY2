@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 public enum KeyType
 {
@@ -33,8 +35,22 @@ public class Movement2D : MonoBehaviour
     [SerializeField] private Vector3 keyOffset = new Vector3(0.5f, 1.2f, 0f);
     [SerializeField] private float keyDistance = 1.0f;
 
+    [Header("Coin Collection")]
+    public int totalCoinsCollected = 0;
+    private int totalCoins = 0;
+    public int coinsCollectedCounter;
+    public TextMeshProUGUI coinText;
+    public TextMeshProUGUI coinTextCounter;
+    public GameObject[] levels;
+    private int coinsForLevel1 = 0;
+    private int coinsForLevel2 = 0;
+    private int coinsForLevel3 = 0;
+    private bool countedLevelOneCoins = false;
+    private bool countedLevelTwoCoins = false;
+    private bool countedLevelThreeCoins = false;
+
     private Rigidbody rb;
-    private Vector3 velocity;
+    public Vector3 velocity;
     private bool isGrounded;
     [SerializeField]private Animator animator;
 
@@ -42,6 +58,9 @@ public class Movement2D : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+
+        totalCoins = GameObject.FindGameObjectsWithTag("Coin").Length;
+        coinText.text = "Coins:" + totalCoinsCollected.ToString();
     }
     void Update()
     {
@@ -85,6 +104,52 @@ public class Movement2D : MonoBehaviour
         Flip();
     }
 
+    public IEnumerator CoinCountUp(GameObject levelEndTrigger)
+    {
+        int totalCoinsOverAllLevels = 0;
+        for (int coins = 0; coins <= totalCoinsCollected; coins++)
+        {
+            coinTextCounter.text = "Level coins collected:" + coins + "/" + totalCoins;
+            yield return new WaitForSeconds(1f);
+        }
+        if (!levels[2].activeSelf && !countedLevelThreeCoins && countedLevelOneCoins && countedLevelTwoCoins)
+        {
+            Debug.Log("third counter");
+            coinsForLevel3 = totalCoinsCollected;
+            totalCoinsCollected = 0;
+            countedLevelThreeCoins = true;
+        }
+        if (!levels[1].activeSelf && !countedLevelTwoCoins && countedLevelOneCoins)
+        {
+            Debug.Log("second counter");
+            coinsForLevel2 = totalCoinsCollected;
+            totalCoinsCollected = 0;
+            countedLevelTwoCoins = true;
+        }
+        if (!levels[0].activeSelf && !countedLevelOneCoins)
+        {
+            Debug.Log("first counter");
+            coinsForLevel1 = totalCoinsCollected;
+            totalCoinsCollected = 0;
+            countedLevelOneCoins = true;
+        }
+        if (coinsForLevel1 <0 && coinsForLevel2 <0 && coinsForLevel3 <0)
+        {
+            totalCoinsOverAllLevels = coinsForLevel1 + coinsForLevel2 + coinsForLevel3;
+        }
+        yield return new WaitForSeconds(1f);
+        levelEndTrigger.GetComponent<LevelEndTrigger>().nextLevel.SetActive(true);
+        levelEndTrigger.GetComponent<LevelEndTrigger>().objectToActivate.SetActive(false);
+        velocity = Vector3.zero;
+        yield return new WaitForSeconds(1f);
+        velocity = Vector3.zero;
+        gameObject.GetComponent<Collider>().enabled = true;
+        gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        gameObject.GetComponent<Rigidbody>().useGravity = true;
+        gameObject.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+        
+    }
+
     void FixedUpdate()
     {
         Vector3 move = new Vector3(horizontal * speed, velocity.y, 0f);
@@ -104,6 +169,13 @@ public class Movement2D : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Coin"))
+        {
+            totalCoinsCollected++;
+            Destroy(other.gameObject);
+            coinText.text = "Coins:" + totalCoinsCollected.ToString();
+        }
+
         if (other.CompareTag("LevelKey"))
         {
             KeyItem keyItem = other.GetComponent<KeyItem>();

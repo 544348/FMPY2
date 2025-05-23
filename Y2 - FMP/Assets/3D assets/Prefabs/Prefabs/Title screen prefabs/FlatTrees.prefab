@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2976637655892369930}
   m_Layer: 0
   m_Name: FlatTrees
-  m_TagString: Untagged
+  m_TagString: DestroyTitleScreenLoopedObjects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToMove: {fileID: 8988282333510192992}
-  targetPosition: {x: 76.5, y: 8.26, z: 8.62}
+  targetPosition: {x: 160, y: 8.26, z: 8.62}
   moveSpeed: 16
 --- !u!114 &2976637655892369930
 MonoBehaviour:
