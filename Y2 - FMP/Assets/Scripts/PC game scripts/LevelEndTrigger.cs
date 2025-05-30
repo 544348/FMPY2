@@ -10,7 +10,6 @@ public class LevelEndTrigger : MonoBehaviour
     public GameObject objectToActivate;     // Drag the object to activate
     public GameObject objectToDeactivate;   // Drag the object to deactivate
     public GameObject nextLevel;
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -24,7 +23,7 @@ public class LevelEndTrigger : MonoBehaviour
                 player.gameObject.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             }
 
-            if (objectToActivate != null)
+            if (objectToActivate != null )
             {
                 objectToActivate.SetActive(true);
                 player.gameObject.GetComponent<Movement2D>().StartCoroutine(player.gameObject.GetComponent<Movement2D>().CoinCountUp(gameObject));

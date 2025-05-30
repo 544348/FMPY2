@@ -51,6 +51,7 @@ public class Interacable : MonoBehaviour
             tasksScript.CompleteTask("Interact with the computer");
             if (isComputer2)
             {
+                Debug.Log("Computer should swap scene");
                 arrow.SetActive(false);
                 tasksScript.CompleteTask("Interact with your computer");
                 yield return new WaitForSeconds(1.4f);

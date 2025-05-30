@@ -2343,8 +2343,8 @@ MonoBehaviour:
   player: {fileID: 967910292}
   teleportPosition: {x: 277.6, y: 154, z: -17.13}
   objectToActivate: {fileID: 205566294}
-  objectToDeactivate: {fileID: 1282644485}
-  nextLevel: {fileID: 1200073001}
+  objectToDeactivate: {fileID: 489122490}
+  nextLevel: {fileID: 947756656}
 --- !u!1 &91288599
 GameObject:
   m_ObjectHideFlags: 0
@@ -36524,7 +36524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

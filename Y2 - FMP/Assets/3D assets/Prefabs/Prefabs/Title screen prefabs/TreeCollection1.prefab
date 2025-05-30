@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToMove: {fileID: 3009813065892900890}
-  targetPosition: {x: 160, y: 0.5458826, z: -8.195919}
+  targetPosition: {x: 300, y: 0.5458826, z: -8.195919}
   moveSpeed: 16
 --- !u!65 &6579383704851043773
 BoxCollider:

@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToMove: {fileID: 6814754200217828743}
-  targetPosition: {x: 160, y: 0.43, z: -2.43}
+  targetPosition: {x: 300, y: 0.43, z: -2.43}
   moveSpeed: 16
 --- !u!114 &5951923158593445995
 MonoBehaviour:

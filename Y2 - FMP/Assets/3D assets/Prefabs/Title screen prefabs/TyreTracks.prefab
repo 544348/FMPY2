@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 9101036117346922470}
   - component: {fileID: 8317226249300442879}
   - component: {fileID: 8495195252135935241}
+  - component: {fileID: 6557768980672710470}
   m_Layer: 0
   m_Name: TyreTracks
   m_TagString: DestroyTitleScreenLoopedObjects
@@ -266,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToMove: {fileID: 7863314633907623920}
-  targetPosition: {x: 160, y: 3.5, z: -28.4918}
+  targetPosition: {x: 300, y: 3.5, z: -28.4918}
   moveSpeed: 16
 --- !u!114 &8495195252135935241
 MonoBehaviour:
@@ -280,3 +281,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc64bfaaee8a5de42b4f94c9c1b75efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &6557768980672710470
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863314633907623920}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.774582, y: 5.775949, z: 1}
+  m_Center: {x: 45.816895, y: 2.3879745, z: 0}
