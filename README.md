@@ -6,3 +6,5 @@ text
 | ----------- | ----------- |
 | Header | Title |
 | Paragraph | Text |
+
+![alt text](image.jpg)
