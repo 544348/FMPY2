@@ -7,4 +7,4 @@ text
 | Header | Title |
 | Paragraph | Text |
 
-![alt text](image.jpg)
+![alt text](invite.webp)
