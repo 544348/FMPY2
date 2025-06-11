@@ -48,4 +48,9 @@ public class SceneSwap : MonoBehaviour
         yield return new WaitForSeconds(sceneChangeDelay);
         SceneManager.LoadScene(sceneName);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
